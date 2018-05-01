@@ -3,7 +3,7 @@
     Classe Ativador do serviço EndPoint REST
 
  */
-package com.lucasisoppo.pedidos.resources;
+package com.lucasisoppo.comanda.resources;
 
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;

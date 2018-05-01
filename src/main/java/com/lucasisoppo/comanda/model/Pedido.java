@@ -1,4 +1,4 @@
-package com.lucasisoppo.pedidos.model;
+package com.lucasisoppo.comanda.model;
 
 import java.util.Date;
 import java.util.List;
@@ -30,7 +30,7 @@ public class Pedido {
     
     @ManyToOne
     @JoinColumn(name = "ID_CLIENTE")
-    private Cliente cliente;
+    private Mesa cliente;
     
     @Column(name = "DT_EMISSAO")
     @Temporal(TemporalType.TIMESTAMP)
@@ -52,11 +52,11 @@ public class Pedido {
         this.id = id;
     }
 
-    public Cliente getCliente() {
+    public Mesa getCliente() {
         return cliente;
     }
 
-    public void setCliente(Cliente cliente) {
+    public void setCliente(Mesa cliente) {
         this.cliente = cliente;
     }
 

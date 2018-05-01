@@ -1,6 +1,6 @@
-package com.lucasisoppo.pedidos.services;
+package com.lucasisoppo.comanda.services;
 
-import com.lucasisoppo.pedidos.model.Cliente;
+import com.lucasisoppo.comanda.model.Mesa;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
@@ -11,35 +11,35 @@ import javax.persistence.TypedQuery;
 
 @Stateless //ejb
 @TransactionAttribute(TransactionAttributeType.SUPPORTS)
-public class ClienteService {
+public class MesaService {
     
     @PersistenceContext(name = "primary")
     private EntityManager em;
     
     @TransactionAttribute(TransactionAttributeType.REQUIRED)
-    public Cliente insert(Cliente cliente){
+    public Mesa insert(Mesa cliente){
         em.persist(cliente);
         return cliente;
     }
     
-    public List<Cliente> findAll(){
-        TypedQuery<Cliente> query = em.createQuery("SELECT c FROM Cliente as c",Cliente.class);
+    public List<Mesa> findAll(){
+        TypedQuery<Mesa> query = em.createQuery("SELECT m FROM Mesa as m",Mesa.class);
         return query.getResultList();
     }
     
     @TransactionAttribute(TransactionAttributeType.REQUIRED)
-    public Cliente update(Cliente cliente){
-        return em.merge(cliente);
+    public Mesa update(Mesa mesa){
+        return em.merge(mesa);
     }
     
     @TransactionAttribute(TransactionAttributeType.REQUIRED)
     public void remove(Long id){
-        Cliente cliente = em.getReference(Cliente.class, id);
-        em.remove(cliente);
+        Mesa mesa = em.getReference(Mesa.class, id);
+        em.remove(mesa);
     }
     
-    public Cliente findById(Long id){
-        return em.find(Cliente.class, id);
+    public Mesa findById(Long id){
+        return em.find(Mesa.class, id);
     }
     
     

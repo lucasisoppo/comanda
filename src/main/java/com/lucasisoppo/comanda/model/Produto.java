@@ -1,4 +1,4 @@
-package com.lucasisoppo.pedidos.model;
+package com.lucasisoppo.comanda.model;
 
 import java.math.BigDecimal;
 import java.util.Objects;

@@ -1,7 +1,7 @@
-package com.lucasisoppo.pedidos.resources;
+package com.lucasisoppo.comanda.resources;
 
-import com.lucasisoppo.pedidos.model.Cliente;
-import com.lucasisoppo.pedidos.services.ClienteService;
+import com.lucasisoppo.comanda.model.Mesa;
+import com.lucasisoppo.comanda.services.MesaService;
 import javax.inject.Inject;
 import javax.ws.rs.BadRequestException;
 import javax.ws.rs.Consumes;
@@ -13,13 +13,13 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-@Path("clientes")
+@Path("mesas")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
-public class ClienteResource {
+public class MesaResource {
     
     @Inject
-    private ClienteService service;
+    private MesaService service;
     
     @GET
     public Response findAll(){
@@ -27,16 +27,16 @@ public class ClienteResource {
     }
     
     @POST
-    public Response insert(Cliente cliente){
-        return Response.status(Response.Status.CREATED).entity(service.insert(cliente)).build();
+    public Response insert(Mesa mesa){
+        return Response.status(Response.Status.CREATED).entity(service.insert(mesa)).build();
     }
     
     @Path("{id}")
-    public Response update(@PathParam("id")Long id, Cliente cliente){
-        if(!id.equals(cliente.getId())){
-            throw new BadRequestException("ID do cliente diferente");
+    public Response update(@PathParam("id")Long id, Mesa mesa){
+        if(!id.equals(mesa.getId())){
+            throw new BadRequestException("ID da mesa diferente");
         }
-        return Response.ok(service.update(cliente)).build();
+        return Response.ok(service.update(mesa)).build();
     }
     
     @Path("{id}")
