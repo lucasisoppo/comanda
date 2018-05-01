@@ -29,16 +29,12 @@ public class Pedido {
     private Long id;
     
     @ManyToOne
-    @JoinColumn(name = "ID_CLIENTE")
-    private Mesa cliente;
+    @JoinColumn(name = "ID_MESA")
+    private Mesa mesa;
     
-    @Column(name = "DT_EMISSAO")
+    @Column(name = "DT_PEDIDO")
     @Temporal(TemporalType.TIMESTAMP)
-    private Date emissao;
-    
-    @Column(name = "DT_APROVACAO")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date aprovacao;
+    private Date dataPedido;
     
     @JoinColumn(name = "ID_PEDIDO")
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
@@ -52,30 +48,22 @@ public class Pedido {
         this.id = id;
     }
 
-    public Mesa getCliente() {
-        return cliente;
+    public Mesa getMesa() {
+        return mesa;
     }
 
-    public void setCliente(Mesa cliente) {
-        this.cliente = cliente;
+    public void setMesa(Mesa cliente) {
+        this.mesa = cliente;
     }
 
-    public Date getEmissao() {
-        return emissao;
+    public Date getDataPedido() {
+        return dataPedido;
     }
 
-    public void setEmissao(Date emissao) {
-        this.emissao = emissao;
+    public void setDataPedido(Date emissao) {
+        this.dataPedido = dataPedido;
     }
-
-    public Date getAprovacao() {
-        return aprovacao;
-    }
-
-    public void setAprovacao(Date aprovacao) {
-        this.aprovacao = aprovacao;
-    }
-
+    
     public List<PedidoItem> getItens() {
         return itens;
     }
@@ -88,9 +76,8 @@ public class Pedido {
     public int hashCode() {
         int hash = 5;
         hash = 23 * hash + Objects.hashCode(this.id);
-        hash = 23 * hash + Objects.hashCode(this.cliente);
-        hash = 23 * hash + Objects.hashCode(this.emissao);
-        hash = 23 * hash + Objects.hashCode(this.aprovacao);
+        hash = 23 * hash + Objects.hashCode(this.mesa);
+        hash = 23 * hash + Objects.hashCode(this.dataPedido);
         hash = 23 * hash + Objects.hashCode(this.itens);
         return hash;
     }
@@ -110,13 +97,10 @@ public class Pedido {
         if (!Objects.equals(this.id, other.id)) {
             return false;
         }
-        if (!Objects.equals(this.cliente, other.cliente)) {
+        if (!Objects.equals(this.mesa, other.mesa)) {
             return false;
         }
-        if (!Objects.equals(this.emissao, other.emissao)) {
-            return false;
-        }
-        if (!Objects.equals(this.aprovacao, other.aprovacao)) {
+        if (!Objects.equals(this.dataPedido, other.dataPedido)) {
             return false;
         }
         if (!Objects.equals(this.itens, other.itens)) {
@@ -127,8 +111,8 @@ public class Pedido {
 
     @Override
     public String toString() {
-        return "Pedido{" + "id=" + id + ", cliente=" + cliente + ", emissao=" + emissao + ", aprovacao=" + aprovacao + ", itens=" + itens + '}';
+        return "Pedido{" + "id=" + id + ", mesa=" + mesa + ", dataPedido=" + dataPedido + ", itens=" + itens + '}';
     }
-    
-    
+
+
 }
