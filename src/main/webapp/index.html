@@ -26,7 +26,7 @@
 
          <div class="collapse navbar-collapse" id="navbarsExampleDefault">
           <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
+            <li class="nav-item active">  
               <a class="nav-link" href="#">Pedidos<span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
@@ -62,13 +62,12 @@
                       <th>Valor Unitário</th>
                     </tr>
                   </thead>
-                 </thead>
               <tbody>
                 <tr ng-repeat="item in vm.registros">
-                  <td>{{item.id}}</td>
-                  <td>{{item.nome}}</td>
-                  <td>{{item.telefone}}</td>
-                  <td>{{item.email}}</td>
+                  <td>{{item.cd_produto}}</td>
+                  <td>{{item.descricao}}</td>
+                  <td>{{item.preco}}</td>
+                  <td>{{item.qtde}}</td>
                   <td class="text-right">
                     <button class="btn btn-sm btn-link">
                       <span data-feather="edit"></span>
