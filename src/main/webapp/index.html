@@ -30,7 +30,7 @@
               <a class="nav-link" href="#">Pedidos<span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Produtos</a>
+              <a class="nav-link" ui-sref="produtosList">Produtos</a>
             </li>
           </ul>
         </div>
@@ -39,50 +39,11 @@
 
     <div class="container-fluid">
       <div class="row">
-          <main ng-controller="ProdutoListControler as vm" role="main" class="col-sm-12 ml-sm-auto col-md-12 px-4">
-              
-              <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
-                <h2 class="h2">Listagem de produtos</h2>
-                <div class="btn-toolbar mb-2 mb-md-0">
-                  <button class="btn btn-success">
-                    <span data-feather="plus-square"></span>
-                    Novo produto
-                  </button>
-                </div>
-              </div>
-
-          
-              <div class="table-responsive">
-                <table class="table table-striped table-sm">
-                  <thead>
-                    <tr>
-                      <th>Codigo</th>
-                      <th>Descrição</th>
-                      <th>Qtde</th>
-                      <th>Valor Unitário</th>
-                    </tr>
-                  </thead>
-              <tbody>
-                <tr ng-repeat="item in vm.registros">
-                  <td>{{item.cd_produto}}</td>
-                  <td>{{item.descricao}}</td>
-                  <td>{{item.preco}}</td>
-                  <td>{{item.qtde}}</td>
-                  <td class="text-right">
-                    <button class="btn btn-sm btn-link">
-                      <span data-feather="edit"></span>
-                    </button>
-                    <button class="btn btn-sm btn-link text-danger">
-                      <span data-feather="trash-2"></span>
-                    </button>
-                  </td>
-                </tr>
-              </tbody>
-                </table>
-              </div>
+          <main role="main" class="col-sm-12 ml-sm-auto col-md-12 px-4">
+            <ui-view></ui-view>
           </main>
       </div>
-    </div>
+    </div>  
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
@@ -92,9 +53,17 @@
     <script src="assets/js/vendor/popper.min.js"></script>
     <script src="dist/js/bootstrap.min.js"></script>
 
+    <!-- Angular -->
+    <script src="assets/js/vendor/angular.js"></script>
+    <script src="assets/js/vendor/angular-locale_pt-br.js"></script>  
+
+    <!-- ui-router -->
+    <script src="https://unpkg.com/@uirouter/angularjs/release/angular-ui-router.min.js"></script>
+
     <!-- Scripts da Aplicação -->
     <script src="app/module.js"></script>
     <script src="app/produto.list.controller.js"></script>
+    <script src="app/produto.form.controller.js"></script>
     <script src="app/produto.service.js"></script>
 
   </body>
