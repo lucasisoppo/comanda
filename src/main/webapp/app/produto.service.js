@@ -8,8 +8,8 @@
 
     function ProdutoService($http) {
 
-        function findAll() {
-            return $http.get('http://localhost:8090/api/produtos')
+        function findAll(filtro) {
+            return $http.get('http://localhost:8090/api/produtos?filtro=' + filtro)
               .then(function(response) {
                 return response.data;
               });

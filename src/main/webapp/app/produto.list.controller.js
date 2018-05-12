@@ -9,9 +9,12 @@
   function ProdutoListController(ProdutoService) {
       var vm = this;
       vm.registros = [];
-  
+      vm.filtro = '';
+
+      vm.atualizar = load;
+
       function load() {
-          ProdutoService.findAll()
+          ProdutoService.findAll(vm.filtro)
             .then(function (dados) {
                 vm.registros = dados
             });

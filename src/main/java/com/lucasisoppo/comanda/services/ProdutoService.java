@@ -8,6 +8,11 @@ import javax.ejb.TransactionAttributeType;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Expression;
+import javax.persistence.criteria.Root;
+import javax.persistence.criteria.Path;
 
 @Stateless //ejb
 @TransactionAttribute(TransactionAttributeType.SUPPORTS)
@@ -22,8 +27,23 @@ public class ProdutoService {
         return produto;
     }
     
-    public List<Produto> findAll(){
-        TypedQuery<Produto> query = em.createQuery("SELECT p FROM Produto as p",Produto.class);
+     private CriteriaQuery<Produto> createCriteriaQuery(String filtro) {
+         CriteriaBuilder cb = em.getCriteriaBuilder();
+        
+         CriteriaQuery<Produto> criteriaQuery = cb.createQuery(Produto.class);
+         Root<Produto> root = criteriaQuery.from(Produto.class);
+        
+        if (filtro != null && !filtro.isEmpty()){
+            Path<String> propriedade = root.get("descricao");
+            Expression<Boolean> predicate = 
+                    cb.like(propriedade, "%" + filtro + "%");
+            criteriaQuery.where(predicate);
+        }
+        return criteriaQuery;
+    }
+    
+    public List<Produto> findAll(String filtro){
+        TypedQuery<Produto> query = em.createQuery(createCriteriaQuery(filtro));
         return query.getResultList();
     }
     

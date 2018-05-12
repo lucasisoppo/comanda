@@ -15,7 +15,7 @@
         function salvar() {
             ProdutoService.insert(vm.registro)
               .then(function(dado){
-                alert('Produto ' + dado.nome + ' inserido com sucesso!!!')
+                alert('Produto ' + dado.descricao + ' inserido com sucesso!!!')
                 vm.registro = {}
               });
         }
